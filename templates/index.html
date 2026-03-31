@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Ranking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="rank">
+
+<div class="overlay">
+<div class="container">
+
+<h1>Resume Analysis Dashboard</h1>
+
+<a href="/"><button class="back-btn">← Back</button></a>
+
+<form action="/rank" method="POST" enctype="multipart/form-data">
+
+    <label>Job Description:</label>
+    <textarea name="job_description" class="big-text" placeholder="Enter detailed job description..." required></textarea>
+
+    <label>Upload Resumes (PDF):</label>
+    <input type="file" name="resumes" multiple required>
+
+    <button type="submit">Analyze Resumes</button>
+
+</form>
+
+{% if results %}
+<h2>Results</h2>
+
+{% for r in results %}
+<div class="card {% if r.rank == 1 %}top{% endif %}">
+
+<h3>#{{ r.rank }} - {{ r.name }}</h3>
+
+<!-- MAIN SCORE -->
+<div class="progress-bar">
+    <div class="progress" style="width: {{ r.score*100 }}%">
+        {{ (r.score*100)|round(1) }}%
+    </div>
+</div>
+
+<p class="level">{{ r.level }}</p>
+
+<!-- OVERALL MATCH -->
+<p><b>Overall Match:</b> {{ r.match_percent }}%</p>
+
+<!-- CATEGORY GRID -->
+<div class="category-grid">
+{% for cat, data in r.category_scores.items() %}
+<div class="category-box">
+
+<p><b>{{ cat }}</b></p>
+
+<div class="mini-bar">
+    <div class="mini-progress" style="width: {{ data.score }}%">
+        {{ data.score }}%
+    </div>
+</div>
+
+<p class="good">✔ {{ data.matched | join(', ') if data.matched else 'No match' }}</p>
+<p class="bad">✘ {{ data.missing | join(', ') if data.missing else 'No major gaps' }}</p>
+
+</div>
+{% endfor %}
+</div>
+
+<!-- EXTRA METRICS -->
+<p><b>Skill Coverage:</b> {{ r.match_percent }}%</p>
+<p><b>Missing Skill Ratio:</b> {{ 100 - r.match_percent }}%</p>
+
+<!-- VERDICT -->
+<div class="verdict">
+<b>AI Insight:</b>
+<p>{{ r.verdict }}</p>
+</div>
+
+</div>
+{% endfor %}
+{% endif %}
+
+</div>
+</div>
+
+</body>
+</html>

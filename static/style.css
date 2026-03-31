@@ -1,0 +1,151 @@
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+/* 🔥 BACKGROUNDS */
+body.home {
+    background: url("/static/images/home-bg.jpg") no-repeat center/cover;
+}
+
+body.rank {
+    background: url("/static/images/rank-bg.jpg") no-repeat center/cover;
+}
+
+/* OVERLAY */
+.overlay {
+    background: rgba(0,0,0,0.6);
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* HERO SECTION */
+.hero-box {
+    text-align: center;
+    background: rgba(255,255,255,0.9);
+    padding: 40px;
+    border-radius: 12px;
+    width: 60%;
+}
+
+.hero-box h1 {
+    font-size: 36px;
+}
+
+.hero-box p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.cta-btn {
+    font-size: 18px;
+    padding: 12px 30px;
+    background: #007bff;
+    border-radius: 8px;
+}
+
+/* CONTAINER */
+.container {
+    width: 70%;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/* BIG TEXTAREA */
+.big-text {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* BUTTON */
+button {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.back-btn {
+    background: #444;
+    margin-bottom: 10px;
+}
+
+/* CARD */
+.card {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.top {
+    border: 2px solid green;
+    background: #eaffea;
+}
+
+/* PROGRESS */
+.progress-bar {
+    background: #ddd;
+    border-radius: 10px;
+}
+
+.progress {
+    height: 20px;
+    background: green;
+    color: white;
+    text-align: center;
+}
+
+/* CATEGORY GRID */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.category-box {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* MINI BARS */
+.mini-bar {
+    background: #eee;
+}
+
+.mini-progress {
+    background: #007bff;
+    color: white;
+    font-size: 12px;
+}
+
+/* TEXT COLORS */
+.good {
+    color: green;
+}
+
+.bad {
+    color: red;
+}
+
+/* VERDICT */
+.verdict {
+    margin-top: 15px;
+    padding: 10px;
+    background: #eef;
+    border-left: 4px solid blue;
+}
